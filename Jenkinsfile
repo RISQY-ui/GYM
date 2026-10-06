@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Code sudah diambil dari GitHub oleh Jenkins.'
+                checkout scm
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing HTML project...'
+                sh 'test -f Index.html'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploy HTML project...'
+                sh 'cp Index.html /var/www/html/index.html'
             }
         }
     }
